@@ -10,30 +10,52 @@ namespace DZ___4
     {
         static void Main(string[] args)
         {
-            #region Subject 1
-
             Console.WriteLine("Введите число строк матрицы: ");
-            int x1 = Int32.Parse(Console.ReadLine());
+            int x = Int32.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите число столбцов матрицы: ");
-            int y1 = Int32.Parse(Console.ReadLine());
+            int y = Int32.Parse(Console.ReadLine());
 
-            int[,] matrix1 = new int[x1,y1];
+            long[,] matrix1 = new long [x,y];
+            int[,] matrix2 = new int[x,y];
             Random r = new Random();
             Int64 sum = 0;
 
-            for (int i = 0; i < x1; i++)
+            for (int i = 0; i < x; i++)
             {
-                for (int j = 0; j < y1; j++)
+                for (int j = 0; j < y; j++)
                 {
                     matrix1[i,j] = r.Next();
+                    matrix2[i,j] = r.Next();
                     sum += matrix1[i,j];
                 }
             }
 
-            for (int i = 0; i < x1; i++)
+            Console.WriteLine("Первая матрица: ");
+            for (int i = 0; i < x; i++)
             {
-                for (int j = 0; j < y1; j++)
+                for (int j = 0; j < y; j++)
+                {
+                    Console.Write($"{matrix1[i, j]} ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Вторая матрица: ");
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    Console.Write($"{matrix2[i, j]} ");
+                    matrix1[i,j] = matrix1[i,j] + matrix2[i,j];
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Сумма матриц: ");
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
                 {
                     Console.Write($"{matrix1[i, j]} ");
                 }
@@ -43,13 +65,6 @@ namespace DZ___4
             Console.WriteLine($"Общая сумма: {sum}");
 
             Console.ReadLine();
-            #endregion
-
-            #region Subject 2
-
-
-
-            #endregion
         }
     }
 }
